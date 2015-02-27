@@ -1,7 +1,6 @@
 package dragutin.dare.chatapp;
 
 
-import android.annotation.TargetApi;
 import android.graphics.Color;
 
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +8,6 @@ import android.os.AsyncTask;
 
 import android.view.Gravity;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -56,12 +54,17 @@ public class GetMessagesTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String string) {
 
+
+        //
+        DisplayMessageActivity.layout.removeAllViews();
+
         String[]messages = string.split(":");
-        String txt_below = "textView_name";
+   //     String txt_below = "textView_name";
 
         LinearLayout.LayoutParams paramsDarijan = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         paramsDarijan.gravity= Gravity.RIGHT;
         paramsDarijan.topMargin = 10;
+        paramsDarijan.rightMargin = 6;
 
         LinearLayout.LayoutParams paramsDragutin = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         paramsDragutin.gravity= Gravity.LEFT;
@@ -73,16 +76,16 @@ public class GetMessagesTask extends AsyncTask<String, Void, String> {
 
             TextView textViewDarijan = new TextView(DisplayMessageActivity.mContext);
             textViewDarijan.setTextColor(Color.BLACK);
-            textViewDarijan.setTextSize(30);
+            textViewDarijan.setTextSize(25);
             textViewDarijan.setBackground(new ColorDrawable(Color.WHITE));
 
             TextView textViewDragutin = new TextView(DisplayMessageActivity.mContext);
             textViewDragutin.setTextColor(Color.BLACK);
             textViewDragutin.setBackground(new ColorDrawable(Color.WHITE));
-            textViewDragutin.setTextSize(30);
+            textViewDragutin.setTextSize(25);
 
             if(messages[i].equals("jH1FFdXlsxkwYSXYBRvXh8yEKRQ=")){
-            //    textView.setLayoutParams(paramsDradvertovn);
+            //    textView.setLayoutParams(paramsDragutin);
                 Darijan = false;
 
             }
@@ -115,6 +118,14 @@ public class GetMessagesTask extends AsyncTask<String, Void, String> {
 
 
         }
+
+        DisplayMessageActivity.scrollView.post(new Runnable(){
+
+            @Override
+            public void run() {
+                DisplayMessageActivity.scrollView.scrollTo(0, DisplayMessageActivity.scrollView.getBottom());
+            }
+        });
 
     }
 

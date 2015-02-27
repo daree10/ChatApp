@@ -1,10 +1,10 @@
 package dragutin.dare.chatapp;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
+
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;

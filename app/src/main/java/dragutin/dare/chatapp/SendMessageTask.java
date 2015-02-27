@@ -60,8 +60,9 @@ protected String doInBackground(String... params) {
         return null;
         }
 
-//@Override
-//protected void onPostExecute(HttpResponse httpResponse) {
-//
-//        }
+@Override
+protected void onPostExecute(String String) {
+    new GetMessagesTask().execute("http://arka.foi.hr/~ddumic/Darijan/chat.txt");
+
+}
 }
